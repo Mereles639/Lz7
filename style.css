@@ -1,0 +1,651 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1a0d1a; /* Darker purple tint */
+    color: #e0e0e0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.glitch-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('glitch_overlay.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0.05; /* Very subtle, just to add texture */
+    z-index: -1; /* Behind everything */
+    animation: backgroundGlitch 15s infinite linear;
+}
+
+@keyframes backgroundGlitch {
+    0% { transform: translate(0, 0); opacity: 0.05; }
+    5% { transform: translate(1px, -1px); opacity: 0.06; }
+    10% { transform: translate(-1px, 1px); opacity: 0.05; }
+    15% { transform: translate(2px, 0); opacity: 0.07; }
+    20% { transform: translate(-2px, -2px); opacity: 0.05; }
+    25% { transform: translate(0, 0); opacity: 0.06; }
+    100% { transform: translate(0, 0); opacity: 0.05; }
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header {
+    background-color: #140a14; /* Even darker purple for header */
+    color: #ff14ff; /* Neon purple */
+    padding: 15px 0;
+    border-bottom: 3px solid #ff14ff; /* Neon purple border */
+    box-shadow: 0 0 20px rgba(255, 20, 255, 0.5); /* Header glow */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    font-size: 1.8em;
+    text-shadow: 0 0 10px #ff14ff, 0 0 20px rgba(255, 20, 255, 0.5); /* Neon glow */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: #e0b0e0; /* Lighter purple for links */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff14ff; /* Neon purple on hover */
+    text-shadow: 0 0 10px #ff14ff;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero_background.png') no-repeat center center/cover;
+    text-align: center;
+    padding: 100px 0;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(255, 20, 255, 0.3); /* Inner neon glow */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('glitch_overlay.png');
+    background-size: cover;
+    opacity: 0.2; /* Slightly more visible glitch */
+    pointer-events: none;
+    animation: heroGlitch 1s infinite alternate;
+}
+
+@keyframes heroGlitch {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
+.hero-section h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #ff14ff; /* Neon purple */
+    text-shadow: 0 0 15px #ff14ff, 0 0 25px rgba(255, 20, 255, 0.7); /* Stronger neon glow */
+    animation: textFlicker 1.5s infinite alternate;
+}
+
+@keyframes textFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.9; }
+    52% { opacity: 1; }
+    54% { opacity: 0.9; }
+}
+
+.hero-section p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #f0c0f0; /* Lighter purple tint for text */
+}
+
+.game-logo {
+    width: 200px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 20px #ff14ff) contrast(1.2); /* Neon glow for logo */
+    animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { filter: drop-shadow(0 0 20px #ff14ff) contrast(1.2); }
+    100% { filter: drop-shadow(0 0 30px #ff14ff) contrast(1.5); }
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #ff14ff; /* Neon purple */
+    color: #140a14; /* Dark background color for text on button */
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 20, 255, 0.7); /* Stronger glow shadow */
+    border: 2px solid #ff14ff;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-30deg);
+    transition: all 0.7s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #ff4fff; /* Lighter neon purple on hover */
+    transform: translateY(-5px) scale(1.05); /* More pronounced hover effect */
+    box-shadow: 0 8px 25px rgba(255, 20, 255, 0.9);
+}
+
+section {
+    padding: 60px 0;
+    text-align: center;
+    position: relative;
+}
+
+section:nth-of-type(even) {
+    background-color: #241224; /* Slightly darker purple for even sections */
+    border-top: 1px solid rgba(255, 20, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 20, 255, 0.1);
+}
+
+.video-section {
+    background-color: #120a12;
+    padding: 80px 0;
+    border-top: 3px solid #ff14ff;
+    border-bottom: 3px solid #ff14ff;
+    box-shadow: inset 0 0 30px rgba(255, 20, 255, 0.3);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    margin: 40px auto 0 auto;
+    max-width: 900px; /* Limit max size */
+    box-shadow: 0 0 30px rgba(255, 20, 255, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+section h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    color: #ff14ff; /* Neon purple */
+    text-shadow: 0 0 10px #ff14ff, 0 0 15px rgba(255, 20, 255, 0.5); /* Neon glow */
+}
+
+.about-section .about-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.about-item {
+    background-color: #140a14; /* Dark background for items */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 20, 255, 0.3), 0 8px 20px rgba(0, 0, 0, 0.5); /* Neon shadow and regular shadow */
+    width: 30%;
+    min-width: 280px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ff14ff; /* Neon border */
+    position: relative;
+    overflow: hidden;
+}
+
+.about-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 20, 255, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+
+.about-item:hover::before {
+    opacity: 1;
+    animation: radialPulse 1s infinite alternate;
+}
+
+@keyframes radialPulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.about-item > * { /* Ensure content stays above pseudo-element */
+    position: relative;
+    z-index: 1;
+}
+
+.about-item:hover {
+    transform: translateY(-15px) scale(1.02); /* More lift */
+    background-color: #241224; /* Slightly lighter on hover */
+    box-shadow: 0 0 25px rgba(255, 20, 255, 0.5), 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.about-item img {
+    width: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px #ff14ff) brightness(1.2); /* Neon glow for icons */
+}
+
+.about-item h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.3em;
+    color: #ff14ff; /* Neon purple */
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255, 20, 255, 0.7);
+}
+
+.about-item p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #f0d0f0; /* Lighter purple tint for text */
+}
+
+.additional-info {
+    font-size: 1.1em;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #ff14ff; /* Neon purple for this highlight */
+    text-shadow: 0 0 5px rgba(255, 20, 255, 0.5);
+    font-weight: bold;
+}
+
+.features-section .feature-item {
+    background-color: #140a14; /* Dark background for items */
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px rgba(255, 20, 255, 0.3), 0 8px 20px rgba(0, 0, 0, 0.5); /* Neon shadow and regular shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ff14ff; /* Neon border */
+    position: relative;
+}
+
+.features-section .feature-item:hover {
+    transform: translateY(-15px) scale(1.02); /* More lift */
+    background-color: #241224; /* Slightly lighter on hover */
+    box-shadow: 0 0 25px rgba(255, 20, 255, 0.5), 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.features-section .feature-item img {
+    width: 70px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px #ff14ff) brightness(1.2); /* Neon glow for icons */
+}
+
+.features-section .feature-item h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.4em;
+    color: #ff14ff; /* Neon purple */
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255, 20, 255, 0.7);
+}
+
+.features-section .feature-item p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #f0d0f0; /* Lighter purple tint for text */
+}
+
+.testimonials-section .testimonial-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.testimonial-item {
+    background-color: #140a14; /* Dark background for items */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 20, 255, 0.3), 0 8px 20px rgba(0, 0, 0, 0.5); /* Neon shadow and regular shadow */
+    width: 30%;
+    min-width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ff14ff; /* Neon border */
+}
+
+.testimonial-item:hover {
+    transform: scale(1.05); /* More pronounced scaling */
+    background-color: #241224; /* Slightly lighter on hover */
+    box-shadow: 0 0 25px rgba(255, 20, 255, 0.5), 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.testimonial-item p {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #e0c0e0; /* Lighter purple tint for text */
+}
+
+.testimonial-item h4 {
+    color: #ff14ff; /* Neon purple */
+    font-size: 1.1em;
+    margin: 0;
+    text-shadow: 0 0 5px rgba(255, 20, 255, 0.7);
+}
+
+.contact-section {
+    background-color: #140a14; /* Dark background */
+    padding: 80px 0;
+    border-top: 3px solid #ff14ff; /* Neon purple border */
+    position: relative;
+    box-shadow: inset 0 0 30px rgba(255, 20, 255, 0.3); /* Inner neon glow */
+}
+
+.contact-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #f0d0f0; /* Lighter purple tint for text */
+}
+
+.btn-discord {
+    display: inline-block;
+    background-color: #ff14ff; /* Neon purple */
+    color: #140a14; /* Dark background for text on button */
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.4em;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 20, 255, 0.7); /* Stronger glow shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 20px auto;
+    width: fit-content;
+    border: 2px solid #ff14ff;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-discord::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-30deg);
+    transition: all 0.7s ease;
+}
+
+.btn-discord:hover::before {
+    left: 100%;
+}
+
+.btn-discord::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url('discord_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    filter: brightness(1.5) drop-shadow(0 0 5px #fff); /* Make discord icon glow */
+    margin-left: 10px; /* Space between text and icon */
+}
+
+.btn-discord:hover {
+    background-color: #ff4fff; /* Lighter neon purple on hover */
+    transform: translateY(-5px) scale(1.05); /* More pronounced hover effect */
+    box-shadow: 0 8px 25px rgba(255, 20, 255, 0.9);
+}
+
+.contact-note {
+    font-size: 0.9em;
+    color: #c088c0; /* Slightly darker purple tint */
+    margin-top: 15px;
+}
+
+.payment-disclaimer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #2a1a2a;
+    border-radius: 10px;
+    border: 2px solid #ff14ff;
+    box-shadow: 0 0 15px rgba(255, 20, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.payment-disclaimer .warning {
+    font-family: 'Press Start 2P', cursive;
+    color: #ffcc00; /* Yellow for warning */
+    font-size: 1.4em;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+    margin: 0;
+}
+
+.payment-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.payment-icons img {
+    width: 60px;
+    height: 60px;
+    filter: grayscale(100%) brightness(0.5); /* Make them look 'not accepted' */
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Add a subtle shake to unaccepted icons to draw attention */
+.payment-icons img {
+    animation: shakeNo 0.5s infinite alternate;
+}
+
+@keyframes shakeNo {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(3px); }
+}
+
+footer {
+    background-color: #080810; /* Very dark purple for footer */
+    color: #888;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid #121224; /* Subtle border */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 5px 10px;
+    }
+
+    .hero-section {
+        padding: 80px 0;
+    }
+
+    .hero-section h2 {
+        font-size: 2em;
+    }
+
+    .hero-section p {
+        font-size: 1.1em;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    .about-section .about-grid,
+    .testimonials-section .testimonial-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-item,
+    .testimonial-item {
+        width: 80%;
+    }
+
+    .features-section .feature-item {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn-primary, .btn-discord {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+    .btn-discord::after { /* Adjust icon position for smaller screens if needed */
+        margin-left: 5px;
+    }
+
+    .payment-disclaimer .warning {
+        font-size: 1.1em;
+    }
+
+    .payment-icons img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    nav ul li a {
+        font-size: 0.9em;
+    }
+
+    .hero-section h2 {
+        font-size: 1.5em;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+    }
+
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    .about-item,
+    .testimonial-item {
+        width: 95%;
+    }
+    .payment-disclaimer {
+        padding: 15px;
+    }
+}
